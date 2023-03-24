@@ -1,0 +1,156 @@
+@import "../../../../mixins.module";
+@import "../../../../variables.module";
+
+.container {
+   width: 100%;
+   padding: 10px;
+   display: flex;
+   flex-direction: column;
+   gap: 7px;
+   .companyContainer {
+      width: 100%;
+      height: 150px;
+      background-color: $containerColor;
+      border-radius: 5px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .detail {
+         h2 {
+            font-family: $primaryFont;
+            font-size: 2rem;
+         }
+         span {
+            font-family: $secondaryFont;
+         }
+      }
+      .total {
+         h2 {
+            font-family: $primaryFont;
+            font-weight: 500;
+            font-size: 1.5rem;
+         }
+      }
+   }
+   .transactionFilter {
+      width: 100%;
+      height: 70px;
+      background-color: $containerColor;
+      border-radius: 5px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+   }
+   .transactionList {
+      width: 100%;
+      min-height: 500px;
+      max-height: auto;
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px 0px #ccc;
+      background-color: $containerColor;
+      padding: 20px;
+      .header {
+         width: 100%;
+         height: 80px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         h2 {
+            font-family: $primaryFont;
+         }
+         span {
+            font-family: $secondaryFont;
+         }
+         div {
+            button {
+               width: 45px;
+               height: 45px;
+               background-color: transparent;
+               border-radius: 100px;
+               border: none;
+               cursor: pointer;
+               &:hover {
+                  box-shadow: 0px 0px 3px 0px #ccc;
+               }
+               svg {
+                  stroke: $primaryColor;
+               }
+            }
+            .calendars {
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 10px;
+               .calIn {
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  span {
+                     font-size: 14px;
+                     font-family: $secondaryFont;
+                  }
+                  input {
+                     width: 180px;
+                     height: 30px;
+                     text-align: center;
+                     font-family: $secondaryFont;
+                     border-radius: 3px;
+                     border: none;
+                     box-shadow: 0px 0px 3px 0px #ccc;
+                     padding: 10px;
+                     outline: none;
+                     text-transform: uppercase;
+                     font-size: 13px;
+                  }
+               }
+            }
+         }
+      }
+      .body {
+         width: 100%;
+         height: 500px;
+         overflow-y: auto;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         flex-direction: column;
+         &::-webkit-scrollbar {
+            width: 5px;
+         }
+         &::-webkit-scrollbar-thumb {
+            background-color: $primaryColor;
+         }
+         .table {
+            display: table;
+            width: 100%;
+            .headRow {
+               display: table-header-group;
+               .head {
+                  display: table-row;
+                  div {
+                     display: table-cell;
+                     width: 250px;
+                     font-family: $primaryFont;
+                     text-align: center;
+                  }
+               }
+            }
+            .bodyRow {
+               display: table-row;
+               &:nth-child(odd) {
+                  background-color: #eee;
+               }
+               div {
+                  display: table-cell;
+                  height: 45px;
+                  font-family: $primaryFont;
+                  vertical-align: middle;
+                  text-align: center;
+               }
+            }
+         }
+      }
+   }
+}

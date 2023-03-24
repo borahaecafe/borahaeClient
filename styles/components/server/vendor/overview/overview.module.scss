@@ -1,0 +1,51 @@
+@import "../../../../mixins.module";
+@import "../../../../variables.module";
+
+.container {
+   width: 100%;
+   padding: 10px;
+   .containerHeader {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      .box {
+         width: 350px;
+         height: 150px;
+         border-radius: 3px;
+         background-color: $containerColor;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         div {
+            width: 100%;
+            h2 {
+               font-family: $secondaryFont;
+               font-weight: 600;
+               font-size: 18px;
+               color: $primaryColor;
+            }
+            span {
+               font-size: 30px;
+               font-family: $secondaryFont;
+            }
+         }
+      }
+   }
+   .containerBody {
+      width: 100%;
+      height: 700px;
+      gap: 10px 20px;
+      padding: 10px;
+      border-radius: 5px;
+      .containerTransaction {
+         height: 100%;
+         background-color: $containerColor;
+         padding: 10px;
+         border-radius: 5px;
+      }
+   }
+}

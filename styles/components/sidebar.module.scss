@@ -1,0 +1,122 @@
+@import "../mixins.module";
+@import "../variables.module";
+
+.container {
+   width: auto;
+   height: 100vh;
+   padding: 10px;
+   background-color: $containerColor;
+   box-shadow: 0px 0px 3px 0px #ccc;
+   display: flex;
+   justify-content: space-between;
+   flex-direction: column;
+   user-select: none;
+   .settings {
+      width: 100%;
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.8);
+   }
+   .profBtnCon {
+      padding: 5px;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      border-top: 1px solid #ccc;
+      padding: 0 5px;
+      button {
+         width: 35px;
+         height: 35px;
+         border-radius: 100%;
+         border: none;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: transparent;
+         &:hover {
+            background-color: #eee;
+         }
+      }
+      span {
+         pointer-events: none;
+      }
+      .tooltip {
+         display: none;
+      }
+      &:hover {
+         .tooltip {
+            display: block;
+            width: auto;
+            background-color: $primaryColor;
+            position: fixed;
+            transform: translate(55px, 0);
+            height: 30px;
+            border-radius: 5px;
+            span {
+               padding: 0 10px;
+               line-height: 30px;
+               font-family: $primaryFont;
+               font-size: 14px;
+               text-align: center;
+               color: #fff;
+            }
+         }
+      }
+   }
+   .con {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 10px 0;
+      h2 {
+         font-family: $primaryFont;
+         font-size: 16px;
+      }
+      nav {
+         width: 100%;
+         padding: 10px;
+         ul {
+            width: 100%;
+            height: max-content;
+
+            li {
+               height: 40px;
+               margin: 10px 0;
+               display: flex;
+               align-items: center;
+               cursor: pointer;
+               padding: 5px;
+               .tooltip {
+                  display: none;
+               }
+               &:hover {
+                  .tooltip {
+                     display: block;
+                     width: auto;
+                     background-color: $primaryColor;
+                     position: fixed;
+                     transform: translate(28px, 0);
+                     height: 30px;
+                     border-radius: 5px;
+                     span {
+                        padding: 0 10px;
+                        line-height: 30px;
+                        font-family: $primaryFont;
+                        font-size: 14px;
+                        text-align: center;
+                        color: #fff;
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}

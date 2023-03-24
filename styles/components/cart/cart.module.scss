@@ -1,0 +1,196 @@
+@import "../../mixins.module";
+@import "../../variables.module";
+
+.container {
+   width: 600px;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   .message {
+      width: 0;
+      padding: 10px;
+      position: fixed;
+      inset: 0;
+   }
+   .header {
+      width: 100%;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row-reverse;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      .profile {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         flex-direction: row-reverse;
+         gap: 15px;
+         .shortcut {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primaryColor;
+            border-radius: 100px;
+            span {
+               font-size: 18px;
+               font-family: $primaryFont;
+               font-weight: 600;
+               color: #fff;
+            }
+         }
+         .info {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            .time {
+               font-family: $secondaryFont;
+               font-size: 14px;
+            }
+            .name {
+               font-size: 15px;
+               font-family: $primaryFont;
+               text-align: right;
+            }
+         }
+      }
+      .btnContainer {
+         width: 60px;
+         height: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         button {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            svg {
+               stroke: $primaryColor;
+            }
+         }
+      }
+   }
+   .cart {
+      width: 100%;
+      height: 100%;
+      .cartContainer {
+         width: 100%;
+         height: 500px;
+         overflow-y: auto;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+         gap: 5px;
+         padding: 10px 5px;
+         &::-webkit-scrollbar {
+            width: 5px;
+         }
+         &::-webkit-scrollbar-thumb {
+            background-color: $primaryColor;
+            border-radius: 100px;
+         }
+      }
+   }
+   .total {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 0 10px;
+      div {
+         display: flex;
+         justify-content: space-between;
+         input {
+            border: none;
+            text-align: right;
+            padding: 10px;
+            font-family: $primaryFont;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: transparent;
+         }
+         h2 {
+            font-family: $primaryFont;
+            font-size: 18px;
+            font-weight: 500;
+         }
+         span {
+            font-size: 18px;
+            font-family: $secondaryFont;
+         }
+      }
+   }
+   .payment {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      .paymentbtn {
+         width: 70px;
+         height: 60px;
+         font-size: 15pxs;
+         text-transform: uppercase;
+         font-family: $secondaryFont;
+         background-color: transparent;
+         border-radius: 5px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         border: none;
+         svg {
+            stroke-width: 1px;
+         }
+      }
+      .activebtn {
+         width: 70px;
+         height: 60px;
+         font-size: 15pxs;
+         text-transform: uppercase;
+         font-family: $secondaryFont;
+         background-color: $primaryColor;
+         border-radius: 5px;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         border: none;
+         svg {
+            stroke-width: 2px;
+            stroke: #fff;
+         }
+         span {
+            color: #fff;
+         }
+      }
+   }
+   .placeorder {
+      width: 100%;
+      height: 100%;
+      button {
+         height: 100%;
+         width: 100%;
+         background-color: $primaryColor;
+         border: none;
+         font-size: 1.2rem;
+         font-weight: 600;
+         color: #fff;
+         font-family: $primaryFont;
+         &:disabled {
+            background-color: rgb(121, 60, 121);
+            cursor: not-allowed;
+         }
+      }
+   }
+}

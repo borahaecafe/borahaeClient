@@ -1,0 +1,19 @@
+@import "../variables.module";
+.container {
+   width: 100%;
+   display: flex;
+   .main {
+      width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      background-color: #eee;
+      &::-webkit-scrollbar {
+         width: 5px;
+         background-color: #ccc;
+      }
+      &::-webkit-scrollbar-thumb {
+         background-color: $primaryColor;
+         border-radius: 5px;
+      }
+   }
+}

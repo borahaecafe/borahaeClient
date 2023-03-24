@@ -1,0 +1,30 @@
+@import "../../../../mixins.module";
+@import "../../../../variables.module";
+
+.container {
+   width: 100%;
+   .searchInput {
+      padding: 10px 20px;
+      input {
+         width: 250px;
+         height: 45px;
+         border-radius: 3px;
+         border: none;
+         padding: 10px;
+         outline: none;
+         font-family: $primaryFont;
+      }
+   }
+   .productContainer {
+      width: 100%;
+      display: grid;
+      padding: 10px;
+      grid-template-columns: repeat(auto-fit, 245px);
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      &::-webkit-scrollbar {
+         width: 5px;
+      }
+   }
+}

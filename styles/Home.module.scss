@@ -1,0 +1,93 @@
+@import "./mixins.module";
+@import "./variables.module";
+.container {
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   .message {
+      padding: 10px;
+      position: fixed;
+      inset: 0;
+      width: 0;
+   }
+   .open {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.664);
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+   .column1 {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+      h2 {
+         font-family: $primaryFont;
+         font-weight: 600;
+         color: $primaryColor;
+         font-size: 2.5rem;
+      }
+      form {
+         width: 500px;
+         display: flex;
+         flex-direction: column;
+         gap: 20px;
+
+         input {
+            height: 40px;
+            padding: 10px;
+            border: none;
+            outline: none;
+            color: $primaryColor;
+            font-size: 16px;
+            font-family: $secondaryFont;
+            background-color: transparent;
+            font-weight: 500;
+            &:focus {
+               border-bottom: 1px solid $primaryColor;
+            }
+            &::placeholder {
+               color: #ccc;
+            }
+         }
+         button {
+            height: 45px;
+            border-radius: 3px;
+            background-color: $primaryColor;
+            color: #fff;
+            font-family: $primaryFont;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            outline: invert;
+            &:disabled {
+               cursor: not-allowed;
+            }
+         }
+         span {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: $secondaryFont;
+            a {
+               color: $primaryColor;
+               font-weight: 600;
+               cursor: pointer;
+            }
+         }
+      }
+   }
+   .column2 {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+   }
+}

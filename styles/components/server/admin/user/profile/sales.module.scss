@@ -1,0 +1,65 @@
+@import "../../../../../mixins.module";
+@import "../../../../../variables.module";
+
+.container {
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   .message {
+      padding: 10px;
+      position: fixed;
+      inset: 0;
+      width: 0;
+   }
+   h2 {
+      font-family: $primaryFont;
+   }
+   .date {
+      display: flex;
+      gap: 20px;
+
+      .dateContainer {
+         width: 200px;
+         display: flex;
+         align-items: center;
+         gap: 20px;
+         input {
+            width: 150px;
+            appearance: none;
+            height: 30px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0px 0px 3px 0px #ccc;
+            &:focus {
+               outline: none;
+            }
+         }
+      }
+      .generatebtn {
+         width: 120px;
+         height: 30px;
+         background-color: $primaryColor;
+         border-radius: 3px;
+         border: none;
+         color: #fff;
+         cursor: pointer;
+      }
+   }
+   .generateContainer {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      .cvsfile {
+         padding: 10px;
+         background-color: $primaryColor;
+         color: #fff;
+         font-family: $secondaryFont;
+         font-size: 15px;
+         border-radius: 3px;
+         cursor: pointer;
+      }
+   }
+}

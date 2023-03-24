@@ -1,0 +1,37 @@
+@import "../../../../../mixins.module";
+@import "../../../../../variables.module";
+
+.container {
+   .message {
+      padding: 10px;
+      position: fixed;
+      inset: 0;
+      width: 0;
+   }
+   width: 100%;
+   h2 {
+      font-family: $primaryFont;
+   }
+   p {
+      padding: 5px 0;
+      font-family: $secondaryFont;
+      text-align: justify;
+   }
+   .locked {
+      padding: 10px 0;
+      button {
+         width: 140px;
+         height: 45px;
+         font-weight: medium;
+         border-radius: 5px;
+         background-color: transparent;
+         color: $primaryColor;
+         font-family: $primaryFont;
+         border: none;
+         background-color: crimson;
+         cursor: pointer;
+         color: white;
+         float: right;
+      }
+   }
+}

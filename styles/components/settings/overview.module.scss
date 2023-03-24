@@ -1,0 +1,31 @@
+@import "../../mixins.module";
+@import "../../variables.module";
+
+.container {
+    width: 100%;
+    h2 {
+        font-family: $primaryFont;
+        font-size: 1.5rem;
+        font-weight: 600;
+        padding: 10px 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        tbody {
+            tr {
+                th, td {
+                    font-family: $primaryFont;
+                    text-align: left;
+                    font-size: 1rem;
+                    height: 45px;
+                    font-weight: 500;
+                    border-bottom: 1px solid #ccc;
+                }
+                td {
+                    font-family: $secondaryFont;
+                }
+               }
+        }
+    }
+}

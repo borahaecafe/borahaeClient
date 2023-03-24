@@ -1,0 +1,31 @@
+@import "../../mixins.module";
+@import "../../variables.module";
+
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    span {
+        font-size: 18px;
+    }
+    button {
+        width: 25px;
+        height: 25px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            stroke-width: 1;
+            stroke: $primaryColor
+      }
+      &:disabled{ 
+        svg { 
+            stroke: #ddd;
+        }
+      }
+    }
+}

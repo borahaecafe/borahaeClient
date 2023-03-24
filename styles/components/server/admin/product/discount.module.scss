@@ -1,0 +1,117 @@
+@import "../../../../mixins.module";
+@import "../../../../variables.module";
+
+.container {
+   width: 550px;
+   height: auto;
+   background-color: #fff;
+   border-radius: 5px;
+   box-shadow: 0px 0px 3px 0px #ccc;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   .header {
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      border-bottom: 1px solid #eee;
+      h2 {
+         width: 100%;
+         font-family: $primaryFont;
+         font-size: 1rem;
+         font-weight: 500;
+      }
+      button {
+         width: 35px;
+         height: 35px;
+         border-radius: 100px;
+         border: none;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         background-color: transparent;
+         &:hover {
+            background-color: #eee;
+            svg {
+               stroke: $primaryColor;
+            }
+         }
+      }
+   }
+   .product {
+      width: 100%;
+      height: 450px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+         width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+         background-color: $primaryColor;
+         border-radius: 100px;
+      }
+      .discountCard {
+         width: 100%;
+         user-select: none;
+         cursor: pointer;
+         display: flex;
+         justify-content: center;
+         padding: 15px 10px;
+         border-radius: 3px;
+         flex-direction: column;
+         h2 {
+            font-family: $primaryFont;
+            font-weight: 500;
+            font-size: 1rem;
+         }
+         span {
+            font-family: $secondaryFont;
+         }
+         &:hover {
+            background-color: $primaryColor;
+            color: #fff;
+         }
+      }
+   }
+   .discount {
+      width: 100%;
+      .dates {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         input {
+            width: 100%;
+            height: 50px;
+            border: none;
+            padding: 10px;
+            font-family: $primaryFont;
+            outline: none;
+            text-align: right;
+            border-top: 1px solid #ccc;
+         }
+         input[type="number"] {
+            width: 100%;
+            padding: 20px;
+         }
+         input[type="datetime-local"] {
+            width: 500px;
+         }
+      }
+      button {
+         width: 100%;
+         height: 50px;
+         background-color: $primaryColor;
+         border: none;
+         font-family: $primaryFont;
+         font-size: 1rem;
+         cursor: pointer;
+         color: #fff;
+      }
+   }
+}

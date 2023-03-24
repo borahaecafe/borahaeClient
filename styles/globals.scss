@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Expletus+Sans:ital,wght@1,700&display=swap");
+@import "./mixins.module";
+@import "./variables.module";
+
+* {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+html,
+body {
+   max-width: 100vw;
+   overflow-x: hidden;
+}
+
+body {
+   background-color: $containerColor;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}

@@ -1,0 +1,48 @@
+@import "../../mixins.module";
+@import "../../variables.module";
+
+.card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    button {
+        width: 70px;
+        height: 100%;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border: none;
+        padding: 0 10px;
+        background-color: rgba(151, 16, 235, 0.808);
+        svg {
+            stroke-width: 2px;
+            stroke: #fff;
+        }
+    }
+    .productCard {
+        width: 100%;
+        display: flex;
+        align-items: center; 
+        justify-content: space-between;
+        padding: 15px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        background-color: $primaryColor;
+        color: #fff;
+        user-select: none;
+        .dc {
+            h2 {
+                font-family: $primaryFont;
+                font-size: 1rem;
+                font-weight: 500;
+            }
+            span {
+                font-family: 500;
+                font-family: $secondaryFont;
+            }
+        }
+        span {
+            font-family: $secondaryFont;
+            font-size: 17px;
+        }
+    }
+}

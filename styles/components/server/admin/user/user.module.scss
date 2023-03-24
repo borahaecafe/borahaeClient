@@ -1,0 +1,171 @@
+@import "../../../../mixins.module";
+@import "../../../../variables.module";
+
+.container {
+   width: 100%;
+   display: flex;
+   gap: 10px;
+   padding: 15px;
+   .add,
+   .prev,
+   .del {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.6);
+      position: fixed;
+      inset: 0;
+   }
+   .userContainer {
+      width: 100%;
+      border-radius: 3px;
+      background-color: $containerColor;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 3px 0px #ccc;
+
+      .header {
+         width: 100%;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         .searchFilter {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            input {
+               width: 250px;
+               height: 35px;
+               padding: 10px;
+               border-radius: 5px;
+               border: none;
+               outline: none;
+               box-shadow: 0px 0px 3px 0px #ccc;
+               &::placeholder {
+                  color: #ccc;
+               }
+               &:focus {
+                  box-shadow: 0 0 3px 0 $primaryColor;
+               }
+            }
+         }
+         .btn {
+            display: flex;
+            align-items: center;
+            .adduser {
+               height: 35px;
+               width: 110px;
+               border-radius: 4px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               gap: 5px;
+               border: none;
+               cursor: pointer;
+               font-weight: 600;
+               background-color: $primaryColor;
+               color: #fff;
+               font-size: 14px;
+            }
+         }
+      }
+      .body {
+         max-height: max-content;
+         min-height: 600px;
+         padding: 10px;
+         overflow-y: auto;
+         .table {
+            display: table;
+            width: 100%;
+            .headerRow {
+               width: 100%;
+               display: table-header-group;
+               text-align: center;
+               .head {
+                  display: table-row;
+                  .avatar {
+                     width: 30px;
+                  }
+                  div {
+                     height: 40px;
+                     width: 200px;
+                     display: table-cell;
+                     vertical-align: middle;
+                     font-family: $primaryFont;
+                     font-size: 16px;
+                     text-align: center;
+
+                     padding: 0 10px;
+                  }
+               }
+            }
+            .bodyRow {
+               display: table-row-group;
+               &:nth-child(odd) {
+                  background-color: #eee;
+               }
+               .bodyCell {
+                  display: table-row;
+                  .avatar {
+                     width: 120px;
+                     display: flex;
+                     align-items: center;
+                     justify-content: center;
+                     div {
+                        width: 40px;
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: $primaryColor;
+                        border-radius: 100px;
+                        color: #fff;
+                        font-size: 16px;
+                     }
+                  }
+                  .roles {
+                     text-transform: uppercase;
+                  }
+                  div {
+                     height: 50px;
+                     display: table-cell;
+                     vertical-align: middle;
+                     font-family: $secondaryFont;
+                     text-align: center;
+                     font-size: 16px;
+                     margin: 0;
+                     padding: 0;
+                  }
+                  .ac {
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     button {
+                        width: 35px;
+                        height: 35px;
+                        border: none;
+                        border-radius: 100%;
+                        background-color: transparent;
+                        cursor: pointer;
+                        padding: 5px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        svg {
+                           pointer-events: none;
+                        }
+                        &:hover {
+                           background-color: $primaryColor;
+                           svg {
+                              stroke: #fff;
+                           }
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+}
