@@ -71,4 +71,9 @@ export const getLimitedTransaction = gql`query GetLimitedTransaction($userId: ID
     createdAt
   }
 }`
+export const getAllVendorTransaction = gql`query GetTotalVendorTransaction($start: String!, $end: String!, $userId: ID!) {
+  getTotalVendorTransaction(start: $start, end: $end, userID: $userId) {
+    total
+  }
+}`
 

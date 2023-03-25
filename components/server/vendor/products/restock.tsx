@@ -21,6 +21,7 @@ export default function Restock({ userid, id, close, title }: any) {
             },
             onCompleted: () => {
                 setMessage(true)
+                close(false)
             }
         })
     }
@@ -28,9 +29,8 @@ export default function Restock({ userid, id, close, title }: any) {
     useEffect(() => {
         setTimeout(() => {
             setMessage(false)
-            close(false)
         }, 2000)
-    }, [ close, message ])
+    }, [ message ])
     return (
         <div className={styles.container}>
             {data && message ? <div className={styles.message}>
@@ -38,12 +38,9 @@ export default function Restock({ userid, id, close, title }: any) {
             </div> : null}
             <form onSubmit={onHandleRestock}>
                 <h2>How many stock would you like to add in {title}? </h2>
-                <input type="text" value={value} onChange={
+                <input type="number" value={value} onChange={
                     (e) => {
                         setValue(parseInt(e.target.value))
-                        if (isNaN(parseInt(e.target.value))) {
-                            setValue(0)
-                        }
                     }
                 } />
                 <div className={styles.btnGrp}>

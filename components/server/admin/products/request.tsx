@@ -21,10 +21,17 @@ export default function Request({ close, userid, id, title }: any) {
                 quantity: quantity
             },
             onCompleted: () => {
+                setMessage(true)
                 close(false)
             }
         })
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setMessage(false)
+        }, 2000)
+    }, [ message ])
     return (
         <div className={styles.container}>
             {

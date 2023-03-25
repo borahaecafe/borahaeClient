@@ -11,14 +11,16 @@ export default function TransactionVendor({ userid }: any) {
     const { loading, data, startPolling } = useQuery(getLimitedTransaction, {
         variables: {
             userId: userid,
-            limit: 14, offset: 0
+            limit: 14, offset: 0,
         }
     })
     useEffect(() => {
         setTimeout(() => {
-            startPolling(30000)
+            startPolling(10000)
         }, 2000)
     }, [ startPolling ])
+
+    if (loading) return null
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -36,7 +38,7 @@ export default function TransactionVendor({ userid }: any) {
                             <div>Total</div>
                         </div>
                     </div>
-                    {loading ? null : data?.getLimitedTransaction.map(({ orderID, quantity, status, total, payment, orderedProduct, createdAt }: any) => (
+                    {data?.getLimitedTransaction.map(({ orderID, quantity, status, total, payment, orderedProduct, createdAt }: any) => (
                         orderedProduct.map(({ title, price }: any) => (
                             <div className={styles.bodyRow} key={orderID}>
                                 <div>{title}</div>

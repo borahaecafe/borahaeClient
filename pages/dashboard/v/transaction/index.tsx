@@ -4,7 +4,7 @@ import Vendor from '../../../../layout/vendor.layout'
 import Head from 'next/head'
 import styles from '../../../../styles/components/server/vendor/transaction/transaction.module.scss'
 import { useLazyQuery } from '@apollo/client'
-import { getTrasactionByCompany } from '../../../../util/transaction/transaction.query'
+import { getTrasactionByCompany, getAllVendorTransaction } from '../../../../util/transaction/transaction.query'
 import jwtDecode from 'jwt-decode'
 import { format, subDays } from 'date-fns'
 import "react-datepicker/dist/react-datepicker.css";
@@ -16,8 +16,7 @@ const Transaction: FC = ({ userid }: any) => {
     const [ endDate, setEndDate ] = useState(format(new Date(Date.now()), "yyyy-MM-dd"))
     const [ getMyTransaction, { data } ] = useLazyQuery(getTrasactionByCompany)
 
-    console.log(userid)
-
+    const [ getMyTotal, { data: dataTotal } ] = useLazyQuery(getAllVendorTransaction)
     useEffect(() => {
         getMyTransaction({
             variables: {
@@ -28,7 +27,17 @@ const Transaction: FC = ({ userid }: any) => {
         })
     }, [ endDate, getMyTransaction, startDate, userid ])
 
-    console.log(data)
+
+    useEffect(() => {
+        getMyTotal({
+            variables: {
+                userId: userid,
+                start: startDate,
+                end: endDate
+            }
+        })
+    }, [ endDate, getMyTotal, startDate, userid ])
+
     return (
         <div className={styles.container}>
             <Head>
@@ -73,7 +82,7 @@ const Transaction: FC = ({ userid }: any) => {
                                     }).format(price)}</div>
                                     <div>x{quantity}</div>
 
-                                    <div>{format(new Date(createdAt), "MMMM dd yyyy")}</div>
+                                    <div>{format(new Date(createdAt), "MMMM dd yyyy hh:mm:ss")}</div>
 
                                     <div>
                                         {
@@ -103,6 +112,13 @@ const Transaction: FC = ({ userid }: any) => {
                         ))}
 
                     </div>
+                </div>
+                <div className={styles.total}>
+                    <h2>Grand Total</h2>
+                    <span> {Intl.NumberFormat("en-PH", {
+                        style: "currency",
+                        currency: "PHP"
+                    }).format(dataTotal?.getTotalVendorTransaction.reduce((a: any, b: any) => (a + b.total), 0))}</span>
                 </div>
             </div>
         </div>

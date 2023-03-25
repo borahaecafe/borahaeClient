@@ -17,8 +17,7 @@ const Products: FC = ({ userid }: any) => {
     const { loading, data, } = useQuery(gpUser, {
         variables: {
             userId: userid
-        },
-        pollInterval: 500
+        }
     })
 
     const [ search, setSearch ] = useState("")

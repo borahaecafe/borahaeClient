@@ -33,7 +33,7 @@ export default function Pullout({ close, userid, id, stock }: any) {
         setTimeout(() => {
             setMessage(false)
         }, 2000)
-    }, [ close, message ])
+    }, [  message ])
 
     return (
         <div className={styles.container}>
