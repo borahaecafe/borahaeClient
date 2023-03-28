@@ -42,9 +42,6 @@ export default function Header() {
         }
     })
 
-
-    console.log(dataNotif)
-
     const onClickedBtn = () => {
         setOpened(() => !open)
     }

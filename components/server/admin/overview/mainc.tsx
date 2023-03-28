@@ -3,9 +3,8 @@ import { Bar } from 'react-chartjs-2'
 import { CategoryScale, Chart as Chartjs, Legend, BarElement, LinearScale, PointElement, Title, Tooltip, LineElement } from 'chart.js/auto'
 Chartjs.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 import { useQuery } from '@apollo/client'
-import { getAllOrders, totalOrderByGroup } from '../../../../util/order/order.query'
+import { getAllOrders } from '../../../../util/order/order.query'
 import styles from '../../../../styles/components/server/admin/overview/mainchart.module.scss'
-import { format } from 'date-fns'
 
 export default function MainChart({ startDate, endDate }: any) {
 

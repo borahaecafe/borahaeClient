@@ -1,11 +1,10 @@
 import React from 'react'
-import { Bar, Line } from 'react-chartjs-2'
+import { Bar } from 'react-chartjs-2'
 import { CategoryScale, Chart as Chartjs, Legend, BarElement, LinearScale, PointElement, Title, Tooltip, LineElement } from 'chart.js/auto'
 import styles from '../../../../../styles/components/server/admin/chart/user.module.scss'
 Chartjs.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 import { activeUser, groupCreatedUser } from '../../../../../util/user/user.query'
 import { useQuery } from '@apollo/client'
-import { format } from 'date-fns'
 
 export default function UserChart() {
 

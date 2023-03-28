@@ -5,7 +5,6 @@ import styles from '../../../../../styles/components/server/admin/chart/product.
 Chartjs.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
 import { getCProduct, getProductGroup } from '../../../../../util/products/product.query'
 import { useQuery } from '@apollo/client'
-import { format } from 'date-fns'
 
 export default function ProductChart({ userid }: any) {
 
@@ -22,8 +21,6 @@ export default function ProductChart({ userid }: any) {
             userId: userid
         }
     })
-
-    console.log(groupData)
 
     if (loading || groupLoad) return null
     return (

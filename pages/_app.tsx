@@ -1,12 +1,14 @@
 import '../styles/globals.scss'
+import { useEffect } from 'react'
 import { ApolloClient, ApolloProvider, InMemoryCache, split, makeVar, createHttpLink } from '@apollo/client'
 import { createClient } from 'graphql-ws'
 import { GraphQLWsLink } from '@apollo/client/link/subscriptions'
 import { getMainDefinition } from '@apollo/client/utilities'
 import PageWithLayout from '../layout/pagewithlayout'
 import Nprogress from 'nprogress'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
+import jwtDecode from 'jwt-decode'
 
 export const cartItem = makeVar([])
 export const supplyCartItem = makeVar([])
@@ -87,6 +89,19 @@ export default function App({ Component, pageProps }: AppLayoutPage) {
   })
   router.events?.on("routeChangeError", () => { Nprogress.done() })
   const Layout = Component.layout || (({ children }: any) => <>{children}</>)
+
+  const cookies = Cookies.get("company_access_token");
+
+  useEffect(() => {
+    if (cookies) {
+      const { exp }: any = jwtDecode(cookies)
+      if (exp === new Date().getTime()) {
+        Cookies.remove("company_access_token");
+        router.push("/")
+      }
+
+    }
+  }, [cookies, router])
   return (
     <ApolloProvider client={client}>
       <Layout>
