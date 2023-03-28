@@ -20,13 +20,13 @@ type AppLayoutPage = {
 }
 
 const createLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: "https://borahaecafe.herokuapp.com/graphql",
   credentials: "include"
 })
 
 
 const webSocketLink = typeof window !== "undefined" ? new GraphQLWsLink(createClient({
-  url: `ws://localhost:4000/graphql`,
+  url: `wss://borahaecafe.herokuapp.com/graphql`,
 
 })) : null
 
@@ -101,7 +101,7 @@ export default function App({ Component, pageProps }: AppLayoutPage) {
       }
 
     }
-  }, [cookies, router])
+  }, [ cookies, router ])
   return (
     <ApolloProvider client={client}>
       <Layout>
