@@ -30,6 +30,7 @@ export default function Home() {
 
 
   const [ token, setToken ] = useState("")
+  const [ id, setid ] = useState("")
   const [ roles, setRoles ] = useState("")
   const [ message, setMessage ] = useState(false)
   const [ otpMessage, setOtpMessage ] = useState(false)
@@ -43,8 +44,13 @@ export default function Home() {
       const { userId, r }: any = jwtDecode(cookies)
       setToken(userId)
       setRoles(r)
+      logs({
+        variables: {
+          userId: userId
+        }
+      })
     }
-  }, [])
+  }, [ logs ])
 
   const [ login, { data, error } ] = useMutation(AuthLogin, {
     variables: {
@@ -60,7 +66,8 @@ export default function Home() {
       })
 
       if (token) {
-        const { r }: any = jwtDecode(token)
+        const { r, userId }: any = jwtDecode(token)
+
         if (r === "administrator") {
           router.push(`/dashboard/a/overview`)
         } else if (r === "vendor") {
@@ -68,11 +75,7 @@ export default function Home() {
         }
       }
 
-      logs({
-        variables: {
-          userId: token
-        }
-      })
+
 
       setMessage(true)
     },
