@@ -16,7 +16,7 @@ export default function Supply({ close, userid }: any) {
 
     const [ prodReq, { data: prodReqData } ] = useMutation(ProductRequest)
 
-    const { loading, data } = useQuery(getCProduct, {
+    const { loading, data, startPolling: startProductPolling } = useQuery(getCProduct, {
         variables: {
             userId: userid
         },
@@ -45,7 +45,8 @@ export default function Supply({ close, userid }: any) {
 
     useEffect(() => {
         startPolling(500)
-    }, [ startPolling ])
+        startProductPolling(500)
+    }, [ startPolling, startProductPolling ])
     return (
         <div className={styles.container}>
             {prodReqData && data ? <div className={styles.message}>
