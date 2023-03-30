@@ -7,7 +7,7 @@ import { client } from '../../../_app'
 import { getCompanyById, transactionQuery, getTrasactionByCompany } from '../../../../util/transaction/transaction.query'
 import { useLazyQuery } from '@apollo/client'
 import { format, subDays } from 'date-fns'
-
+import { useRouter } from 'next/router'
 export const getStaticPaths = async () => {
 
     const { data: { getAllCompanyUser } } = await client.query({
@@ -38,6 +38,10 @@ export const getStaticProps = async (context: any) => {
     }
 }
 const TransactionID = ({ company }: any) => {
+
+    const router = useRouter()
+
+
     const [ id, setID ] = useState("")
 
     const [ startDate, setStartDate ] = useState(format(subDays(new Date(Date.now()), 7), "yyyy-MM-dd"))
@@ -62,6 +66,10 @@ const TransactionID = ({ company }: any) => {
             },
         })
     }, [ endDate, getMyDate, id, startDate ])
+
+    if (router.isFallback) {
+        return <div>Loading...</div>
+    }
 
     return (
         company.map(({ companyID, companyName, user, orders }: any) => (
