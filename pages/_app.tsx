@@ -20,15 +20,13 @@ type AppLayoutPage = {
 }
 
 const createLink = createHttpLink({
-  // uri: "https://borahaecafe.herokuapp.com/graphql",
-  uri: "http://localhost:4000/graphql",
+  uri: "https://borahaecafe.herokuapp.com/graphql",
   credentials: "include"
 })
 
 
 const webSocketLink = typeof window !== "undefined" ? new GraphQLWsLink(createClient({
-  // url: `wss://borahaecafe.herokuapp.com/graphql`,
-  url: "ws://localhost:4000/graphql"
+  url: `wss://borahaecafe.herokuapp.com/graphql`,
 })) : null
 
 
@@ -44,7 +42,7 @@ const splitLink = typeof window !== "undefined" && webSocketLink !== null ? spli
 
 export const client = new ApolloClient({
   link: splitLink,
-  
+
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
@@ -75,7 +73,7 @@ export const client = new ApolloClient({
             }
           }
         },
-        
+
       },
     },
 
