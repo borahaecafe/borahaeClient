@@ -53,6 +53,7 @@ export default function Home() {
       const token = Cookies.set("company_access_token", data.login.token, {
         sameSite: "none",
         secure: true,
+        path: "/",
         expires: 60 * 60 * 24 * 7
       })
 
