@@ -13,7 +13,7 @@ import { recerateOTP } from '../util/otp/otp.mutation'
 import PageOne from '../components/main/page/pageOne'
 import PageTwo from '../components/main/page/pageTwo'
 import PageThree from '../components/main/page/pageThree'
-
+import { logCreate } from '../util/logs/log.mutation'
 interface Auth {
   email: string
   password: string
@@ -35,6 +35,8 @@ export default function Home() {
   const [ otpMessage, setOtpMessage ] = useState(false)
   const [ otp, setOtp ] = useState(false)
   const [ page, setPage ] = useState(1)
+
+  const [ logs ] = useMutation(logCreate)
   useEffect(() => {
     const cookies = Cookies.get("company_access_token")
     if (cookies) {
@@ -66,6 +68,11 @@ export default function Home() {
         }
       }
 
+      logs({
+        variables: {
+          userId: token
+        }
+      })
 
       setMessage(true)
     },
