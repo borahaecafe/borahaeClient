@@ -12,7 +12,7 @@ import Message from '../../../../message/message'
 export default function Supply({ close, userid }: any) {
 
     const [ message, setMessage ] = useState(false)
-    const { loading: loadSupply, data: supplyData } = useQuery(SupplyCartQuery)
+    const { loading: loadSupply, data: supplyData, startPolling } = useQuery(SupplyCartQuery)
 
     const [ prodReq, { data: prodReqData } ] = useMutation(ProductRequest)
 
@@ -43,6 +43,9 @@ export default function Supply({ close, userid }: any) {
         setMessage(false)
     }, [ message ])
 
+    useEffect(() => {
+        startPolling(500)
+    }, [ startPolling ])
     return (
         <div className={styles.container}>
             {prodReqData && data ? <div className={styles.message}>

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import PageWithLayout from '../../../../layout/pagewithlayout'
 import Dashboard from '../../../../layout/dashboard.layout'
 import Head from 'next/head'
@@ -13,7 +13,7 @@ const Menu: FC = ({ userid }: any) => {
 
     const [ search, setSearch ] = useState("")
 
-    const { loading, data } = useQuery(getCProduct, {
+    const { loading, data, startPolling } = useQuery(getCProduct, {
         variables: {
             userId: userid
         },
@@ -30,6 +30,9 @@ const Menu: FC = ({ userid }: any) => {
         })
         setSearch(e.target.value)
     }
+    useEffect(() => {
+        startPolling(500)
+    }, [ startPolling ])
     return (
         <div className={styles.container}>
             <Head>

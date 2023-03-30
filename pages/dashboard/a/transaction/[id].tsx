@@ -15,7 +15,7 @@ export const getStaticPaths = async () => {
     })
 
 
-    const paths = await getAllCompanyUser.map(({ companyID }: any) => {
+    const paths = getAllCompanyUser.map(({ companyID }: any) => {
         return { params: { id: companyID } }
     })
     return {

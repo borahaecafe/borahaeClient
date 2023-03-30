@@ -4,17 +4,16 @@ import NotifiCard from './notifCard'
 import X from '../../public/server/icon/x.svg'
 import { getNotificationByUser, getNotiID } from '../../util/notification/notification.query'
 import { useQuery } from '@apollo/client'
-import { notifiSubscription } from '../../util/notification/notification.subscription'
 import NotificatitonPreview from './notiPreview'
 
 export default function Notification({ userid, close, roles }: any) {
 
     const [ noti, setNoti ] = useState("")
 
-    const { loading, data, subscribeToMore } = useQuery(getNotificationByUser, {
+    const { loading, data, startPolling } = useQuery(getNotificationByUser, {
         variables: {
             userId: userid
-        }
+        },
     })
 
 
@@ -25,21 +24,8 @@ export default function Notification({ userid, close, roles }: any) {
     })
 
     useEffect(() => {
-        return subscribeToMore({
-            document: notifiSubscription,
-            variables: {
-                userId: userid
-            },
-            updateQuery: (prev, { subscriptionData }) => {
-                if (!subscriptionData.data) return prev
-                const newPost = subscriptionData.data.notificationSubscriptions
-                return {
-                    getUserNotification: [ ...prev.getUserNotification, newPost ]
-                }
-
-            }
-        })
-    }, [ subscribeToMore, userid ])
+        startPolling(500)
+    }, [ startPolling ])
 
     return (
         <div className={styles.container}>
@@ -72,7 +58,7 @@ export default function Notification({ userid, close, roles }: any) {
                 {noti ?
                     <div className={styles.bprev}>
                         {getNotiLoading ? null : getNotiData.getNotificationID.map(({ notificationID, request, createdAt, title }: any) => (
-                            <NotificatitonPreview key={notificationID} id={notificationID} title={title} request={request} date={createdAt} userid={userid} roles={roles}/>
+                            <NotificatitonPreview key={notificationID} id={notificationID} title={title} request={request} date={createdAt} userid={userid} roles={roles} />
                         ))}
                     </div> : null}
             </div>

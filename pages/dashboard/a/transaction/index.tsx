@@ -17,12 +17,7 @@ const Orders: FC = () => {
 
     const [ companySearch, { data: searchData } ] = useLazyQuery(searchCompany)
 
-    const { loading, data } = useQuery(transactionQuery, {
-        fetchPolicy: "network-only",
-        defaultOptions: {
-            notifyOnNetworkStatusChange: true
-        }
-    })
+    const { loading, data } = useQuery(transactionQuery)
 
 
     const handleSearch = (e: any) => {

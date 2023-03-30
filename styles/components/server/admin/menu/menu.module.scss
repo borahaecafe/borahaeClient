@@ -21,7 +21,7 @@
       padding: 10px;
       grid-template-columns: repeat(auto-fit, 245px);
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 10px;
       &::-webkit-scrollbar {
          width: 5px;
