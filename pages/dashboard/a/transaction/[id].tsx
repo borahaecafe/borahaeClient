@@ -30,13 +30,12 @@ export const getStaticProps = async (context: any) => {
         query: getCompanyById, variables: {
             companyId: companyid
         },
-        fetchPolicy: "no-cache"
     })
     return {
         props: {
             company: getCompanyID
         },
-        revalidate: 60
+        revalidate: 0
     }
 }
 const TransactionID = ({ company }: any) => {

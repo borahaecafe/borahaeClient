@@ -42,7 +42,11 @@ const splitLink = typeof window !== "undefined" && webSocketLink !== null ? spli
 
 export const client = new ApolloClient({
   link: splitLink,
-
+  defaultOptions: {
+    query: {
+      fetchPolicy: "no-cache"
+    }
+  },
   cache: new InMemoryCache({
     typePolicies: {
       Query: {
