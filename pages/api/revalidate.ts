@@ -1,7 +1,7 @@
 
 export const revalidate = async (res: any, req: any) => {
     try {
-        await res.revalidate("/transaction/")
+        await res.revalidate("/dashboard/a/transaction")
         return res.json({ revalidate: true })
     }
     catch (err) {
