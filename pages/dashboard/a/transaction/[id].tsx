@@ -29,7 +29,8 @@ export const getStaticProps = async (context: any) => {
     const { data: { getCompanyID } } = await client.query({
         query: getCompanyById, variables: {
             companyId: companyid
-        }
+        },
+        fetchPolicy: "no-cache"
     })
     return {
         props: {
