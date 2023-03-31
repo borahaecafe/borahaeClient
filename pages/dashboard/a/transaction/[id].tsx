@@ -34,7 +34,8 @@ export const getStaticProps = async (context: any) => {
     return {
         props: {
             company: getCompanyID
-        }
+        },
+        revalidate: 10
     }
 }
 const TransactionID = ({ company }: any) => {
