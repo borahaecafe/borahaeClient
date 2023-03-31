@@ -35,13 +35,12 @@ export const getStaticProps = async (context: any) => {
         props: {
             company: getCompanyID
         },
-        revalidate: 10
+        revalidate: 60
     }
 }
 const TransactionID = ({ company }: any) => {
 
     const router = useRouter()
-
 
     const [ id, setID ] = useState("")
 
