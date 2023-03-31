@@ -21,9 +21,9 @@ export const transactionQuery = gql`query GetAllCompanyUser {
   }
 }`
 
-export const getCompanyById = gql`query GetAllOrders($companyId: ID!) {
+export const getCompanyById = gql`query Query($companyId: ID!) {
   getCompanyID(companyID: $companyId) {
-    companyID
+   companyID
     companyName
     product {
       title
@@ -40,7 +40,7 @@ export const getCompanyById = gql`query GetAllOrders($companyId: ID!) {
       }
     }
   }
-}`
+  }`
 
 export const getTrasactionByCompany = gql`query GetAllTransactionByCompany($userId: ID!, $start: String, $end: String) {
   getAllTransactionByCompany(userID: $userId, start: $start, end: $end) {
