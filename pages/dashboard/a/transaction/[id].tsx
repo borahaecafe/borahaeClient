@@ -19,7 +19,8 @@ export const getStaticPaths = async () => {
         return { params: { id: companyID } }
     })
     return {
-        paths, fallback: true
+        paths, fallback: true,
+        revalidate: 10
     }
 }
 export const getStaticProps = async (context: any) => {
