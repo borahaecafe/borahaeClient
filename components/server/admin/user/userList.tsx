@@ -15,7 +15,7 @@ export default function UserList({ userID, role, profile, date, company, locked 
         <div key={userID} className={styles.bodyRow}>
             {id ?
                 <div className={styles.prev}>
-                    <UserPrev id={id} close={setId} locked={locked} />
+                    <UserPrev id={id} close={setId} locked={locked} role={role} />
                 </div> : null}
             {del ?
                 <div className={styles.del}>

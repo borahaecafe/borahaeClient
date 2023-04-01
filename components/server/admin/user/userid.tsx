@@ -7,7 +7,7 @@ import UserLogs from './profile/logs'
 import UserOverview from './profile/overview'
 import Locked from './profile/locked'
 
-export default function UserId({ id, close, locked }: any) {
+export default function UserId({ id, close, locked, role }: any) {
 
     const [ set, setSett ] = useState("overview")
 
@@ -19,10 +19,20 @@ export default function UserId({ id, close, locked }: any) {
         { name: "Lock Account", value: "locked" }
     ]
 
+
+    const AdminSidebar = [
+        { name: "Overview", value: "overview" },
+        { name: "Report Sale", value: "sales" },
+        { name: "Change password", value: "password" },
+        { name: "Activity Log", value: "log" },
+    ]
+
     return (
         <div className={styles.container}>
             <div className={styles.sidebar}>
-                {sidebar.map(({ name, value }) => (
+                {role === "vendor" ? sidebar.map(({ name, value }) => (
+                    <button key={name} value={value} style={set === value ? { backgroundColor: "#F9F9F9", color: "#A020F0" } : { background: "transparent", color: "#FFFDD0" }} onClick={(e) => setSett(e.currentTarget.value)}>{name}</button>
+                )) : AdminSidebar.map(({ name, value }) => (
                     <button key={name} value={value} style={set === value ? { backgroundColor: "#F9F9F9", color: "#A020F0" } : { background: "transparent", color: "#FFFDD0" }} onClick={(e) => setSett(e.currentTarget.value)}>{name}</button>
                 ))}
             </div>
