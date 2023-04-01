@@ -29,7 +29,7 @@ export default function Locked({ userid, locked }: any) {
             refetchQueries: [ {
                 query: getUserProfile,
                 variables: {
-                    limit: 10, offset: 0
+                    userId: userid
                 }
             } ],
             onQueryUpdated: (observableQuery) => {
@@ -43,6 +43,7 @@ export default function Locked({ userid, locked }: any) {
             setMessage(false)
         }, 2000)
     }, [ message ])
+    console.log(lock)
     return (
         <div className={styles.container}>
             {
