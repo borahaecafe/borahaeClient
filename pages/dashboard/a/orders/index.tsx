@@ -10,13 +10,28 @@ import { useQuery } from '@apollo/client'
 import { getAllOrders } from '../../../../util/order/order.query'
 import { orderSub } from '../../../../util/order/order.subscription'
 import { subDays } from 'date-fns'
+import { format } from 'date-fns'
 import "react-datepicker/dist/react-datepicker.css";
+import { CSVLink } from 'react-csv'
+
+import Download from '../../../../public/server/icon/download.svg'
+const headers = [
+    { label: "Item", key: "item" },
+    { label: "sku", key: "sku" },
+    { label: "Payment", key: "payment" },
+    { label: "Date Ordered", key: "dateOrdered" },
+    { label: "Status", key: "status" },
+    { label: "Quantity", key: "quantity" },
+    { label: "Total", key: "total" }
+]
+
+
 const Orders: FC = ({ userid }: any) => {
 
 
     const [ startDate, setStartDate ] = useState(new Date(subDays(Date.now(), 7)))
     const [ endDate, setEndDate ] = useState(new Date(Date.now()))
-
+    const [ filename, setFilename ] = useState(`${new Date(Date.now())}-orders`)
     const { loading, data, subscribeToMore } = useQuery(getAllOrders, {
         variables: {
             start: startDate,
@@ -41,6 +56,18 @@ const Orders: FC = ({ userid }: any) => {
     }, [ subscribeToMore, userid ])
 
 
+    const datas = data ? data.getAllOrders.map(({ createdAt, payment, orderedProduct, total, quantity, status }: any) => {
+        return {
+            item: orderedProduct[ 0 ].title,
+            sku: orderedProduct[ 0 ].sku,
+            payment: payment === "gcash" ? "GCASH" : null || payment === "cash" ? "CASH" : null || payment === "bpi/bdo" ? "BPI/BDO" : null,
+            dateOrdered: format(new Date(createdAt), "MM dd, yyyy h:m:s a"),
+            status: status === "approved" ? "Sold" : null || status === "refund" ? "Refund" : null,
+            quantity: quantity,
+            total: total
+        }
+    }) : null
+
     return (
         <div className={styles.container}>
             <Head>
@@ -48,18 +75,25 @@ const Orders: FC = ({ userid }: any) => {
             </Head>
 
             <div className={styles.orderContainer}>
-                <div className={styles.filterDate}>
-                    <div className={styles.date}>
-                        <span>Start Date: </span>
-                        <DatePicker
-                            selected={startDate}
-                            onChange={(date: Date) => setStartDate(date)} startDate={startDate} endDate={endDate} />
+                <div className={styles.header}>
+                    <div className={styles.filterDate}>
+                        <div className={styles.date}>
+                            <span>Start Date: </span>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={(date: Date) => setStartDate(date)} startDate={startDate} endDate={endDate} />
+                        </div>
+                        <div className={styles.date}>
+                            <span>End Date: </span>
+                            <DatePicker
+                                selected={endDate}
+                                onChange={(date: Date) => setEndDate(date)} startDate={startDate} endDate={endDate} />
+                        </div>
                     </div>
-                    <div className={styles.date}>
-                        <span>End Date: </span>
-                        <DatePicker
-                            selected={endDate}
-                            onChange={(date: Date) => setEndDate(date)} startDate={startDate} endDate={endDate} />
+                    <div>
+                        {data ? <CSVLink data={datas} headers={headers} filename={filename} className={styles.csvFile}>
+                            <Download />
+                        </CSVLink> : null}
                     </div>
                 </div>
                 <div className={styles.body}>

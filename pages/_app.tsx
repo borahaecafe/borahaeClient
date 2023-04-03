@@ -20,7 +20,8 @@ type AppLayoutPage = {
 }
 
 const createLink = createHttpLink({
-  uri: "https://borahaecafe.herokuapp.com/graphql",
+  // uri: "https://borahaecafe.herokuapp.com/graphql",
+  uri: "http://localhost:4000/graphql",
   credentials: "include"
 })
 
